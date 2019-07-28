@@ -21,8 +21,6 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: database,
-      user:     'username',
-      password: 'password'
     },
     migrations: {
       directory: "./data/migrations"
