@@ -12,4 +12,9 @@ const authRouter = require('../auth/authRoute.js');
 server.use('/api', authRouter);
 server.use('/api', userRouter);
 
+
+server.get('/', (req, res) => {
+    res.send({message: "Api up!"})
+})
+
 module.exports = server;
