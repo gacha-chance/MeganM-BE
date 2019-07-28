@@ -18,10 +18,8 @@ module.exports = {
     }
   },
   production: {
-    client: 'postgresql',
-    connection: {
-      database: database,
-    },
+    client: 'pg',
+    connection: database,
     migrations: {
       directory: "./data/migrations"
     },
