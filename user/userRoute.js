@@ -20,4 +20,13 @@ router.get("/registered/:id", authenticate, (req, res) => {
     .catch(error => res.status(500).json(error))
 })
 
+router.get('/saved/:id', authenticate, (req, res) => {
+    const { id } = req.params;
+    users.displayCalculations(id)
+    .then(calc => {
+        res.status(200).json(calc)
+    })
+    .catch(err => res.status(500).json(err))
+})
+
 module.exports = router;
