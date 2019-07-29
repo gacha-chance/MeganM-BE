@@ -9,11 +9,11 @@ module.exports = {
     addChance,
     addRollNum,
     addCompChance,
-    getRollCalculations,
-    getChanceCalculations,
-    getCompCalculations,
-    getCalculations,
-    displayCalculations
+    // getRollCalculations,
+    // getChanceCalculations,
+    // getCompCalculations,
+    // getCalculations,
+    // displayCalculations
 }
 
 
@@ -22,19 +22,13 @@ function find() {
 }
 
 function findById(id) {
-    return db('users')
+    return db('users').select('id', 'username')
     .where('id', id)
 }
 
 function findBy(filter) {
     return db('users')
     .where(filter)
-}
-
-function findById(id) {
-    return db('users').select('id', 'username')
-    .where('id', id)
-    .first()
 }
 
 function add(user) {
