@@ -18,7 +18,7 @@ router.get("/registered/:id", authenticate, (req, res) => {
         res.status(200).json(registered)
     })
     .catch(error => res.status(500).json(error))
-})
+});
 
 router.get('/saved/:id', authenticate, (req, res) => {
     const { id } = req.params;
@@ -27,6 +27,6 @@ router.get('/saved/:id', authenticate, (req, res) => {
         res.status(200).json(calc)
     })
     .catch(err => res.status(500).json(err))
-})
+});
 
 module.exports = router;

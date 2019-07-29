@@ -5,9 +5,12 @@ const generateToken = require('./generateToken')
 const users = require('../data/dataModeling/usersModel');
 
 router.post('/register', (req, res) => {
+    console.log('\n Req for error\n',req.body);
     let user = req.body;
 	const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
-	user.password = hash;
+    user.password = hash;
+    
+    console.log('\ninsomnia test\n', user);
 
 	users.add(user)
 		.then(saved => {
