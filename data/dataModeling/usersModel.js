@@ -9,11 +9,11 @@ module.exports = {
     addChance,
     addRollNum,
     addCompChance,
-    getRollCalculations,
-    getChanceCalculations,
-    getCompCalculations,
-    getCalculations,
-    displayCalculations
+    // getRollCalculations,
+    // getChanceCalculations,
+    // getCompCalculations,
+    // getCalculations,
+    // displayCalculations
 }
 
 
@@ -73,66 +73,71 @@ function addCompChance(compChance) {
     })
 }
 
-function getChanceCalculations(userId) {
-    return db('chanceOfAcquiring')
-    .where({ user_id: userId })
-    .then(chance => {
-        return chance;
-    })
-}
+// TODO: Figure out a better way to write what you want here. 
+// TODO: Want to display calculations based on the user id provided
+// ? How do I display it as an array attached to a user if I use innerjoin?
 
 
-function getCompCalculations(userId) {
-    return db('compoundChance')
-    .where({ user_id: userId })
-    .then(compChance => {
-        return compChance;
-    })
-}
-
-function getRollCalculations(userId) {
-    return db('numberOfRolls')
-    .where({ user_id: userId })
-    .then(rolls => {
-        return rolls;
-    })
-}
+// function getChanceCalculations(userId) {
+//     return db('chanceOfAcquiring')
+//     .where({ user_id: userId })
+//     .then(chance => {
+//         return chance;
+//     })
+// }
 
 
-function getCalculations(userId) {
-    return db('users')
-    .where({ id: userId })
-    .first()
-    .then(user => {
-        return getChanceCalculations(id).then(chance => {
-            user.chance = chance;
-        })
-    })
-    .then(user => {
-        return getCompCalculations(id).then(compChance => {
-            user.compChance = compChance;
-        })
-    })
-    .then(user => {
-        return getRollCalculations(id).then(roll => {
-            user.roll = roll;
-            return user;
-        })
-    })
-}
+// function getCompCalculations(userId) {
+//     return db('compoundChance')
+//     .where({ user_id: userId })
+//     .then(compChance => {
+//         return compChance;
+//     })
+// }
 
-function displayCalculations(id) {
-    return db('users').select('id', 'username')
-    .where('id', id)
-    .first()
-    .then(user => {
-        if(user) {
-            return getCalculations(id).then(calcs => {
-                user.calcs = calcs;
-                return user;
-            })
-        } else {
-            return null;
-        }
-    })
-}
+// function getRollCalculations(userId) {
+//     return db('numberOfRolls')
+//     .where({ user_id: userId })
+//     .then(rolls => {
+//         return rolls;
+//     })
+// }
+
+
+// function getCalculations(userId) {
+//     return db('users')
+//     .where({ id: userId })
+//     .first()
+//     .then(user => {
+//         return getChanceCalculations(id).then(chance => {
+//             user.chance = chance;
+//         })
+//     })
+//     .then(user => {
+//         return getCompCalculations(id).then(compChance => {
+//             user.compChance = compChance;
+//         })
+//     })
+//     .then(user => {
+//         return getRollCalculations(id).then(roll => {
+//             user.roll = roll;
+//             return user;
+//         })
+//     })
+// }
+
+// function displayCalculations(id) {
+//     return db('users').select('id', 'username')
+//     .where('id', id)
+//     .first()
+//     .then(user => {
+//         if(user) {
+//             return getCalculations(id).then(calcs => {
+//                 user.calcs = calcs;
+//                 return user;
+//             })
+//         } else {
+//             return null;
+//         }
+//     })
+// }

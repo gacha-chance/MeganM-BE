@@ -6,14 +6,14 @@ const authenticate = require("../auth/authenticate.js");
 router.get("/registered", authenticate, (req, res) => {
 	users.find()
 		.then(users => {
-			res.json(users);
+			res.status(200).json(users);
 		})
-		.catch(err => res.send(err));
+		.catch(err => res.status(500).json(err));
 });
 
 router.get("/registered/:id", authenticate, (req, res) => {
     const { id } = req.params;
-    users.findById(id)
+   users.findById(id)
     .then(registered => {
         res.status(200).json(registered)
     })
@@ -22,11 +22,11 @@ router.get("/registered/:id", authenticate, (req, res) => {
 
 router.get('/saved/:id', authenticate, (req, res) => {
     const { id } = req.params;
-    users.displayCalculations(id)
+   users.displayCalculations(id)
     .then(calc => {
         res.status(200).json(calc)
     })
-    .catch(err => res.status(500).json(err))
+    .catch(error => res.status(500).json({error}))
 });
 
 module.exports = router;
