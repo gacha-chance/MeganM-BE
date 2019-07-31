@@ -100,8 +100,8 @@ function getCompCalculations(userId) {
     .where({
       user_id: userId,
     })
-    .then(compoundedChance => {
-      return compoundedChance;
+    .then(data => {
+      return data;
     });
 }
 
@@ -111,8 +111,8 @@ function getRollCalculations(userId) {
     .where({
       user_id: userId,
     })
-    .then(rollNum => {
-      return rollNum;
+    .then(data => {
+      return data;
     });
 }
 
