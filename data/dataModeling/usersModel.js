@@ -73,9 +73,6 @@ function addCompChance(compChance) {
         })
 }
 
-// TODO: Figure out a better way to write what you want here. 
-// TODO: Want to display calculations based on the user id provided
-// ? How do I display it as an array attached to a user if I use innerjoin?
 
 
 function getChanceCalculations(userId) {
@@ -126,7 +123,7 @@ function getCalculations(userId) {
         .then(user => {
             return getRollCalculations(userId).then(rollNum => {
                 user.rollNum = rollNum;
-               return user;
+                return user;
             })
         })
         .then(user => {
