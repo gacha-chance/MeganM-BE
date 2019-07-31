@@ -18,7 +18,7 @@ module.exports = {
 };
 
 function find() {
-  return db("users").select("id", "users");
+  return db("users").select("id", "username");
 }
 
 function findById(id) {
