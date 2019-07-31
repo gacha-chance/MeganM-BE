@@ -65,6 +65,21 @@ router.post('/registered/:id/addRoll', authenticate, (req, res) => {
     })
 })
 
+router.post('/registered/:id/addDesired', authenticate, (req, res) => {
+    const desiredOutcome = {
+        user_id: req.params.id,
+        ...req.body
+    };
+
+    users.addDesired(desiredOutcome)
+    .then(desiredOutcome => {
+        res.status(201).json(desiredOutcome)
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
+})
+
 router.get('/saved/:id', authenticate, (req, res) => {
     const { id } = req.params;
    users.displayCalculations(id)
