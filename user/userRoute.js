@@ -87,21 +87,14 @@ router.post("/registered/:id/addDesired", authenticate, (req, res) => {
 });
 
 router.get("/saved/:id", authenticate, (req, res) => {
-  const userId = req.jwtToken.id;
-  const { id } = req.params;
+ 
 
-  if (userId !== req.params.id) {
-    res.status(400).json({
-      error: "You cannot access this data",
-    });
-  } else {
     users
       .displayCalculations(id)
       .then(calc => {
         res.status(200).json(calc);
       })
       .catch(error => res.status(500).json(error));
-  }
 });
 
 module.exports = router;
