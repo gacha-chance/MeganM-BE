@@ -87,9 +87,9 @@ router.post("/registered/:id/addDesired", authenticate, (req, res) => {
 });
 
 router.get("/saved/:id", authenticate, (req, res) => {
- 
-
-    users
+  const { id } = req.params;  
+  
+  users
       .displayCalculations(id)
       .then(calc => {
         res.status(200).json(calc);
