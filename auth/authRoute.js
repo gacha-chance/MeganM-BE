@@ -18,6 +18,7 @@ router.post("/register", (req, res) => {
       res.status(201).json(saved);
     })
     .catch(error => {
+      console.error(error);
       res.status(500).json(error);
     });
 });
@@ -31,6 +32,7 @@ router.post("/login", (req, res) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user);
         res.status(200).json({
+          id: user.id,
           message: `Welcome ${user.username}`,
           token,
         });
