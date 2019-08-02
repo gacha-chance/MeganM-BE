@@ -10,8 +10,6 @@ router.post("/register", (req, res) => {
   const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
   user.password = hash;
 
-  console.log("\ninsomnia test\n", user);
-
   users
     .add(user)
     .then(saved => {
