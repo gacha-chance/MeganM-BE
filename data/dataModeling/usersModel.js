@@ -5,7 +5,6 @@ module.exports = {
   findById,
   findBy,
   add,
-  remove,
   addChance,
   addRollNum,
   addCompChance,
@@ -19,7 +18,7 @@ module.exports = {
 };
 
 function find() {
-  return db("users");
+  return db("users").select("id", "username");
 }
 
 function findById(id) {
@@ -39,12 +38,6 @@ function add(user) {
       const [id] = ids;
       return findById(id);
     });
-}
-
-function remove(id) {
-  return db("users")
-    .where("id", id)
-    .del();
 }
 
 function addChance(chance) {
